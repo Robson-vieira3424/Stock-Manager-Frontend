@@ -1,0 +1,46 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    width: 25%;
+    margin: 0;
+    padding: 10px 0 10px 15px;
+    gap: 18px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.32);
+}
+
+.icon{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:rgba(0, 0, 0, 0.6);
+    
+}
+
+.header__card{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.title__card{
+    font-size: 14px;
+    margin: 0;
+    color:rgba(0, 0, 0, 0.6);
+}
+
+.quantity__card{
+    margin: 0;
+    font-size: 32px;
+    font-weight: bolder
+}
+
+.subtitle__card{
+    margin: 0;
+    font-size: 14px;
+    color:rgba(0, 0, 0, 0.6);
+
+}

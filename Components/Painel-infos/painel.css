@@ -1,0 +1,15 @@
+.painel{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.container__cards{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    gap:20px;
+    height: 100%;
+}

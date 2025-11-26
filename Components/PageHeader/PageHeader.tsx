@@ -22,13 +22,15 @@ export default function PageHeader({
   onButtonClick,
   showBack = false,
 }: PageHeaderProps) {
+  
   return(
+    <section className="Alinhando">
     <div className="page-header">
       <div className="left">
         <div className="icon">{icon}</div>
         <div>
           <h1>{title}</h1>
-          <span>{subtitle}</span>
+          <span className="subtitle">{subtitle}</span>
         </div>
       </div>
 
@@ -38,6 +40,7 @@ export default function PageHeader({
         </button> 
       )}
     </div>
+    </section>
   );
 
 
