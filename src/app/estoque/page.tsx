@@ -3,7 +3,8 @@
 import { BsBoxSeam } from "react-icons/bs";
 import PageHeader from "../../../Components/PageHeader/PageHeader";
 import Painel from "../../../Components/Painel-infos/painel";
-
+import ProductTable from "../../../Components/Table/ProductTable";
+import "../global.css"
 
 export default function EstoquePage() {
     return (
@@ -16,6 +17,7 @@ export default function EstoquePage() {
                 onButtonClick={() => alert("Adicionar item")}
             />
             <Painel/>
+            <ProductTable/>
         </>
     );
 }

@@ -27,7 +27,7 @@ export default function PageHeader({
     <section className="Alinhando">
     <div className="page-header">
       <div className="left">
-        <div className="icon">{icon}</div>
+        <div className="icon__header">{icon}</div>
         <div>
           <h1>{title}</h1>
           <span className="subtitle">{subtitle}</span>

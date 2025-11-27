@@ -9,6 +9,12 @@
     padding: 10px 0 10px 15px;
     gap: 18px;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.32);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover{
+    transform: translateY(-6px);
+    box-shadow: 2px 6px 14px rgba(173, 216, 230, 0.55); /* azul bebê esfumado */
 }
 
 .icon{
@@ -42,5 +48,6 @@
     margin: 0;
     font-size: 14px;
     color:rgba(0, 0, 0, 0.6);
+    
 
 }
