@@ -32,9 +32,13 @@ tbody tr{
     
 }
 
+tbody tr:hover{
+    background-color: #6666660e;
+    
+}
+
 tbody tr td {
     padding: 15px 12px;
-    background: #ffffff;
     font-size: 14px;
     color: #333;
 }
