@@ -8,26 +8,35 @@ import { movimentacao } from "../../../testeLocal/Mocks";
 import { useEffect, useState } from "react";
 import { Moviments } from "../../../types/Moviments";
 import axios from "axios";
+import Modal from "../../../Components/Modal/Modal";
+import FormMoviments from "../../../Components/Forms/FormMoviments/FormMoviments";
+
 
 export default function MovimentacoesPage() {
 
-    const [listMoviments, setListMoviments]= useState<Moviments[]>([])
+    const [listMoviments, setListMoviments] = useState<Moviments[]>([])
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const getListMoviments = async () => {
-        
+
         const res = await axios.get("http:localhost:8080/moviments");
-        const lista =  res.data as Moviments[];
+        const lista = res.data as Moviments[];
         setListMoviments(lista);
     }
 
-    useEffect( ()=> {
+    useEffect(() => {
         getListMoviments();
     }, []
- )
+    )
 
-   /* const criarMoviment = (e) =>{
-    
-    } */
+    /* const criarMoviment = (e) =>{
+     
+     } */
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <>
@@ -36,11 +45,14 @@ export default function MovimentacoesPage() {
                 title="Movimentações"
                 subtitle="Histórico de entradas e saídas - Prefeitura Municipal de Penedo"
                 buttonText="Nova Movimentação"
-                onButtonClick={() => alert("Adicionar item")}
+                onButtonClick={() => setIsModalOpen(true)}
             />
 
             <PainelMovimentacoes />
-            <MovimentsTable  movimentacao={listMoviments} />
+            <MovimentsTable movimentacao={listMoviments} />
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                <FormMoviments onClose={handleCloseModal} />
+                </Modal>
         </>
     );
 }

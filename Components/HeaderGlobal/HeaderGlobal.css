@@ -212,8 +212,6 @@
   
 }
 
-
-
 .conteudo__pagina {
     width: 75%;
     margin: 70px auto;
@@ -225,3 +223,4 @@
     margin-left: 260px;
     width: calc(100% - 260px);
 }
+

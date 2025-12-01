@@ -1,0 +1,105 @@
+form {
+    font-family: "Roboto", sans-serif;
+    border: 2px solid rgba(0, 0, 0, 0.349);
+    max-width: 500px;
+    border: 1px solid beige;
+    border-radius: 4%;
+    background-color: rgba(139, 139, 139, 0.082);
+}
+
+fieldset {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: none;
+
+}
+
+legend {
+    
+    text-align: left;
+    margin: 18px 0 18px 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.781);
+}
+
+.container__label__input__form {
+    width: 44%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.89);
+}
+
+input,
+.select__item {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+input:focus,
+.select__item:focus {
+    outline: 2px solid #177cff;
+    outline-offset: 2px;
+}
+
+.container__label__input__form100 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10;
+    width: 100%;
+}
+
+.input__observação {
+    width: 92%;
+    margin-top: 10px;
+}
+
+.container__buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+.cancelar__btn {
+    width: 45%;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: rgba(0, 0, 0, 0.63);
+}
+
+.cancelar__btn:hover {
+    cursor: pointer
+}
+
+.registrar__btn {
+    width: 45%;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
+    background-color: #177cff;
+    color: #ffffff;
+}
+
+
+.registrar__btn:hover {
+    cursor: pointer
+}
