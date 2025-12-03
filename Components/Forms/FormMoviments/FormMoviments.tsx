@@ -41,7 +41,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
         const fetchProducts = async () => {
             try {
                 // Ajuste a URL se seu endpoint de listar produtos for diferente
-                const response = await axios.get("http://localhost:8080/productg");
+                const response = await axios.get("http://localhost:8080/product");
                 setProductsList(response.data); 
             } catch (error) {
                 console.error("Erro ao buscar produtos:", error);
