@@ -14,7 +14,9 @@ interface FormMovimentsProps {
 
 export default function FormMoviments({ onClose }: FormMovimentsProps) {
     // Estados do Formulário
+    
     const [productsList, setProductsList] = useState<Product[]>([]);
+    
     const [formData, setFormData] = useState({
         productId: "",
         type: "INPUT", // Valor padrão compatível com Java (INPUT/OUTPUT)
@@ -39,7 +41,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
         const fetchProducts = async () => {
             try {
                 // Ajuste a URL se seu endpoint de listar produtos for diferente
-                const response = await axios.get("http://localhost:8080/products");
+                const response = await axios.get("http://localhost:8080/productg");
                 setProductsList(response.data); 
             } catch (error) {
                 console.error("Erro ao buscar produtos:", error);
