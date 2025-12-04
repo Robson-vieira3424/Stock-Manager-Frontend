@@ -22,7 +22,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
         productId: "",
         type: "INPUT", // Valor padrão compatível com Java (INPUT/OUTPUT)
         amount: 0,
-        date: new Date().toISOString().split('T')[0], // Data de hoje
+        date: "", // Data de hoje
         // Campos visuais (não salvos no banco ainda pois faltam no DTO)
         categoria: "", 
         secretaria: "",
