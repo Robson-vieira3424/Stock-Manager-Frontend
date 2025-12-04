@@ -1,0 +1,56 @@
+.footer__nav__menu__global {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    flex: 1;
+
+}
+
+.container__info_footer_nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+}
+
+.icone__footer__nav {
+    padding: 0 0 0 16px;
+}
+
+.info__footer__nav {}
+
+.email__user {
+    font-size: 14px;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.831);
+    letter-spacing: .4px;
+}
+
+.role__user {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: .7px;
+    color: rgba(0, 0, 0, 0.831);
+    text-transform: capitalize;
+}
+
+.btn__exit {
+    text-align: start;
+    background-color: transparent;
+    border: none;
+    margin: 10px 0 10px 11px;
+    width: 25%;
+    border-radius: 15%;
+    color: red;
+    text-transform: capitalize;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn__exit:hover {
+    cursor: pointer;
+}

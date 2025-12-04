@@ -1,8 +1,27 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <h1>Ola mundo</h1>
+    <main>
+      <section>
+        <section>
+          <h1>Dashboard</h1>
+          <p>Visão Geral do sistema patrimonial</p>
+        </section>
+        <section>
+          <select name="filtro_data" id="filtro_data">
+            <option value="mounth">Último mês</option>
+            <option value="three">Últimos 3 meses</option>+
+            <option value="six">Últimos 6 meses</option>
+            <option value="year">Últimos ano</option>
+          </select>
+          <select name="filtro_" id="filtro_data">
+            <option value="mounth">Último mês</option>
+            <option value="three">Últimos 3 meses</option>+
+            <option value="six">Últimos 6 meses</option>
+            <option value="year">Últimos ano</option>
+          </select>
+        </section>
+      </section>
+    </main>
   );
 }
