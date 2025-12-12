@@ -1,0 +1,221 @@
+.form__computer {
+  width: 100%;
+  max-width: 750px; 
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: .7rem;
+  overflow-y: scroll;
+  max-height: 85%;
+  
+}
+
+.header__form__computer {
+  margin-bottom: 1rem;
+}
+.title__container__cards {
+  width: 90%;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.title__form__computer {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.container__button__type__computer {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 1.5rem;
+}
+
+.card__form__computer {
+  display: flex;
+  flex-direction: row;
+  width: 47%;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card__form__computer:hover {
+  transform: translateY(-3px); /* levanta o card */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* sombra maior e suave */
+}
+.card-selecionado {
+  outline: 3px solid #2563eb; /* azul Tailwind 600 */
+  outline-offset: 2px;
+  transform: translateY(-2px); /* fica levemente levantado */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+}
+
+.icon__card__form__computer {
+  display: flex;
+
+  align-items: center;
+}
+.infos__card__form__computer {
+  margin-left: 1rem;
+}
+
+.title__card__form__computer {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.description__card__form__computer {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+}
+
+.header__body__info__gabinete {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.container__inputs__align__row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 0 1rem 0;
+}
+
+.container__item__form__computer {
+  min-width: 48%;
+}
+
+.container__interno__form__computadores {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1.3rem;
+}
+
+.container__item__form__computer__small {
+  width: 31%;
+}
+/* Estilo base do Trigger do Select (o botão) */
+.select-trigger-computer {
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+/* Quando estiver focado (navegação teclado) ou aberto (clicado) */
+.select-trigger-computer:focus, 
+.select-trigger-computer[data-state="open"] {
+  outline: 3px solid #2563eb; /* Mesmo azul do card */
+  outline-offset: 2px;        /* Espaçamento do outline */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18); /* Sombra do card */
+  border-color: transparent;  /* Remove a borda padrão para focar no outline */
+}
+
+.input__computer{
+  padding-left: .6rem;
+}
+
+.input__computer:focus{
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;        
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18); 
+  border-color: transparent;  
+  padding-left: .6rem;
+
+}
+
+.body__info__monitor{
+  margin-top: 1rem;
+}
+
+.header__body__info__monitor{
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+
+}
+
+.body__info__estabilizador{
+  margin-top: 1rem;
+}
+
+.header__body__info__estabilizador{
+  display: flex;
+  flex-direction: row;
+ 
+}
+
+.body__info__localizacao{
+  margin-top: 1rem;
+  max-height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.header__body__info__localizacao{
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  justify-content: start;
+  align-items:start;
+}
+
+.container__inputs__align__row__licalização{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding: 0 0 1rem 0;
+
+}
+
+.container__align__buttons{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: end;
+}
+
+.btn__cancelar__computer{
+  text-transform: capitalize;
+  padding: .5rem 1rem;
+  border:1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-weight:500;
+}
+
+.btn__cancelar__computer:hover{
+  cursor: pointer;
+  
+}
+
+.btn__cadastrar__computer{
+  text-transform: capitalize;
+  padding: .5rem 1rem;
+  border:1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #2563eb;
+  color: #fff;
+  font-weight:500;
+}
+
+.btn__cadastrar__computer:hover{
+  cursor: pointer;
+  
+}

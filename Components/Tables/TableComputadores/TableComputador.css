@@ -1,0 +1,275 @@
+.table__computadores {
+  max-width: 90%;
+  margin: 0 auto;
+}
+.Header__Table {
+  background-color: #8c9baa1c;
+}
+
+.Table__Head {
+  color: rgba(0, 0, 0, 0.5);
+  padding: 0 10px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.patrimonio__linha {
+  padding: 0 10px;
+  font-weight: 600;
+  color: #0066ffda;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.equipamento {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.nome__equipamento {
+  font-weight: 500;
+  margin: 0;
+  font-size: .97rem;
+}
+
+.modelo__equipamento {
+  font-weight: 500;
+  color: #00000099;
+  font-size: 0.85rem;
+}
+
+.align__tipo {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.interno__tipo {
+  padding: 0.2rem 1rem;
+  border: 1px solid black;
+  min-width: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.info__componentes {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.info__processador {
+  width: 100%;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: .85rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.container__memoria__armazenamento {
+  display: flex;
+  flex-direction: row;
+}
+
+.info__memoria {
+  font-size: .85rem;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.info__localizacao {
+  display: flex;
+  flex-direction: row; /* Coloca ícone e texto lado a lado */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: flex-start; /* O segredo: Centraliza horizontalmente na célula */
+  gap: 0.8rem; /* Espaço entre ícone e texto */
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.container__secretaria__setor {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.container__secretaria__localizacao,
+.container__setor__localizacao {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+}
+
+.container__secretaria__localizacao {
+  font-size: 1rem;
+}
+
+.container__setor__localizacao {
+  font-size: 0.8rem;
+  color: #00000099;
+}
+.container__icon__localizacao {
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.status___computador {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.style__type__allinone {
+  padding: 0.2rem 1rem;
+  border: 1px solid #0080ff;
+  min-width: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  color: #0080ff;
+  background-color: #deeeff;
+}
+
+.style__type__lenovo {
+  padding: 0.2rem 1rem;
+  border: 1px solid #ef4444;
+  min-width: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  color: #ef4444;
+  background-color: #ffd8d2;
+}
+
+.style__type__xps {
+  padding: 0.2rem 1rem;
+  border: 1px solid #39d6f2;
+  min-width: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  color: #39d6f2;
+  background-color: #e6f8fb;
+}
+
+.style__type__generico {
+  padding: 0.2rem 1rem;
+  border: 1px solid #a855f7;
+  min-width: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  color: #a855f7;
+  background-color: #f6eefe;
+}
+
+.style__type__uso {
+  padding: 0.2rem 1rem;
+  border: 1px solid;
+  min-width: 100px;
+  display: inline-flex; /* Use inline-flex para não ocupar 100% da célula */
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 auto;
+
+  color: #10b981; /* Verde esmeralda */
+  border-color: #10b981;
+  background-color: #d1fae5; /* Verde bem claro */
+}
+
+/* Status: MANUTENCAO (AMARELO/LARANJA) */
+.style__type__manutencao {
+  padding: 0.2rem 1rem;
+  border: 1px solid;
+  min-width: 100px;
+  display: inline-flex; /* Use inline-flex para não ocupar 100% da célula */
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 auto;
+
+  color: #f59e0b; /* Laranja âmbar */
+  border-color: #f59e0b;
+  background-color: #fef3c7; /* Amarelo bem claro */
+}
+
+/* Status: DEFEITO (VERMELHO/RUIM) */
+.style__type__defeito {
+  padding: 0.2rem 1rem;
+  border: 1px solid;
+  min-width: 100px;
+  display: inline-flex; /* Use inline-flex para não ocupar 100% da célula */
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 auto;
+
+  color: #ef4444; /* Vermelho padrão */
+  border-color: #ef4444;
+  background-color: #fee2e2; /* Vermelho bem claro */
+}
+
+/* Status: DISPONIVEL (AZUL CLARO/NEUTRO) */
+.style__type__disponivel {
+ padding: 0.2rem 1rem;
+  border: 1px solid;
+  min-width: 100px;
+  display: inline-flex; /* Use inline-flex para não ocupar 100% da célula */
+  flex-wrap: wrap;
+  border-radius: 18px;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 auto;
+
+  color: #60a5fa; /* Azul neutro */
+  border-color: #60a5fa;
+  background-color: #e0f2fe; /* Azul bem claro */
+}
