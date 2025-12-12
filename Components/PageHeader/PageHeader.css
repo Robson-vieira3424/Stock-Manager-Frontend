@@ -24,6 +24,7 @@
     margin: 0;
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
+    font-weight: 600;
 }
 
 .subtitle{
@@ -35,11 +36,11 @@
 .icon__header{
     margin: 0 ;
     background-color: #177cffd8;
-    font-size: 27px;
+    font-size: 30px;
     color: #f0f0f0;
-    padding:10px 12px 3px  ;
-    border-radius: 10px;
-    
+    padding:10px 12px ;
+    border-radius: 12px;
+
     display: flex;
     justify-content: center;
     align-items: center;

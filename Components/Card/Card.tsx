@@ -5,12 +5,15 @@ interface CardProps{
     title:string;
     quantity:string;
     subtitle:string;
+    cor:string;
 }
 export default function Card({
     icon,
     title,
     quantity,
     subtitle,
+    cor
+    
 }:CardProps) {
     return(
         <section className="card">
@@ -18,7 +21,7 @@ export default function Card({
                 <section className="icon">{icon}</section>
                 <h1 className="title__card">{title}</h1>
             </section>
-            <p className="quantity__card">{quantity}</p>
+            <p className="quantity__card" style={{color:cor}}>{quantity}</p>
             <p className="subtitle__card">{subtitle}</p>
 
         </section>
