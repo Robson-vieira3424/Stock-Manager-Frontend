@@ -1,3 +1,4 @@
+"use client"
 import { ReactNode, useEffect, useState } from "react";
 import "./Modal.css"
 import { createPortal } from "react-dom";

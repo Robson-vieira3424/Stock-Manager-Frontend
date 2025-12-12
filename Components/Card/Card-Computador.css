@@ -1,0 +1,63 @@
+.card__computador{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: flex-start;
+    
+    gap: 15px;
+
+    border: 1px solid transparent;
+    border-radius: 15px;
+    width: 25%;
+    margin: 0;
+    padding: 10px 0 10px 15px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.32);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+   min-height: 110; 
+   
+}
+
+.card__computador:hover{
+    transform: translateY(-6px);
+    box-shadow: 2px 6px 14px rgba(173, 216, 230, 0.55); /* azul bebê esfumado */
+}
+
+.icon__computador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    color:rgba(0, 0, 0, 0.6);
+   
+    
+    border-radius:10px;
+    background-color: aqua;
+
+    width: 40px; 
+    height: 40px; 
+    border-radius: 10px;
+    background-color: aqua;
+    flex-shrink: 0;
+
+}
+
+.container__interno__card__computador__texts{
+display: flex;
+flex-direction: column;
+height: 55px;
+justify-content: center;
+}
+
+
+.quantity__card__product{
+    margin: 0;
+    font-size: 26px;
+    font-weight: bolder
+}
+
+.subtitle__card__product{
+    margin: 0;
+    font-size: 14px;
+    color:rgba(0, 0, 0, 0.6);
+}
