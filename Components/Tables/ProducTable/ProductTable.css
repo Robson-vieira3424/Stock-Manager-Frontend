@@ -6,26 +6,37 @@
     margin-top: 40px;
     
 }
-table{
+.table__products{
     width: 90%;
     border-collapse: separate;
     display: table;
     border: 1px solid rgba(0, 0, 0, 0.138);
     border-radius: 12px;
-    border-spacing: 0 10px;
+    border-spacing: 0;
+    background-color: #F2F4F6;
 }
 
-thead tr{
+.header__table__products tr:hover {
+    
+}
+
+.th__theader{
+   
+  padding: 0 10px;
+  text-align: center;
+  
+
+    padding: 12px 10px;
+    color:  rgba(0, 0, 0, 0.5);;
+    font-weight: 600;
+   font-size: .95rem;
+    text-align: center;
+   
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     background-color: transparent;
 }
 
-th{
-    text-align: left;
-    padding: 12px 10px;
-    color: #5a5a5a;
-    font-weight: 600;
-    font-size: 14px;
-}
+
 
 tbody tr{
     background-color: #ffffff;
@@ -41,6 +52,7 @@ tbody tr td {
     padding: 15px 12px;
     font-size: 14px;
     color: #333;
+    text-align: center;
 }
 
 td{
@@ -89,6 +101,7 @@ td{
 .acoes{
     display: flex;
     gap: 5px;
+    justify-content: center;
 }
 
 .btn-edit{

@@ -15,24 +15,13 @@ interface ProdutoData {
 }
 
 export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
- 
-  const PRODUTOS = [
-        "Eletrônicos",
-        "Alimentos",
-        "Bebidas",
-        "Produtos de Limpeza",
-        "Higiene Pessoal",
-        "Roupas",
-        "Calçados",
-        "Papelaria",
-        "Ferramentas",
-        "Móveis",
-    ];
+
+
 
   const [formData, setFormData] = useState<ProdutoData>({
     nome: "",
-    min: "",       
-    quantidade:""
+    min: "",
+    quantidade: ""
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -50,22 +39,22 @@ export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
     setIsLoading(true);
 
     if (!formData.nome || formData.quantidade === "" || formData.min === "") {
-        alert("Preencha todos os campos!");
-        setIsLoading(false);
-        return;
+      alert("Preencha todos os campos!");
+      setIsLoading(false);
+      return;
     }
 
     const productPayload = {
-      name: formData.nome,           
+      name: formData.nome,
       quantity: Number(formData.quantidade),
-      min: Number(formData.min)      
+      min: Number(formData.min)
     };
 
     console.log("Enviando JSON:", productPayload);
 
     try {
 
-     await axios.post("http://localhost:8080/product", productPayload);
+      await axios.post("http://localhost:8080/product", productPayload);
 
       alert("Produto cadastrado com sucesso!");
 
@@ -84,31 +73,20 @@ export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
   };
   return (
     <>
-      <form onSubmit={handleSubmit} >
-        <fieldset>
-          <legend>Novo Produto</legend>
+      <form className="form__product" onSubmit={handleSubmit} >
+        <fieldset className="fildset__form__product">
+          <legend className="legend__form__product">Novo Produto</legend>
 
           <div className="input__form__producs">
-            <label htmlFor="nome">Produto</label>
-            <select
-              className="select__item"
-              name="nome"
-              id="nome"
-              value={formData.nome}
-              onChange={handleChange}
-            >
-             <option value="">Selecione um produto</option>
-                            {PRODUTOS.map((item) => (
-                                <option key={item} value={item.toLocaleLowerCase().replace(" ", "_")}>
-                                    {item}</option>
-                            ))}
-            </select>
+            <label className="lable__form__product" htmlFor="nome">Produto</label>
+            <input className="input__form__product" value={formData.nome}
+              onChange={handleChange} type="text" placeholder="Nome do produto" name="nome" />
           </div>
 
           <div className="container__inputs__menores">
             <div className="input__menor">
-              <label htmlFor="">Quantidade</label>
-              <input type="number"
+              <label className="lable__form__product" htmlFor="">Quantidade</label>
+              <input className="input__form__product" type="number"
                 name="quantidade"
                 id="quantidade"
                 value={formData.quantidade}
@@ -117,13 +95,14 @@ export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
             </div>
 
             <div className="input__menor">
-              <label htmlFor="">Estoque Min</label>
-              <input type="number"
+              <label className="lable__form__product" htmlFor="">Estoque Min</label>
+              <input className="input__form__product" type="number"
                 name="min"
                 id="min"
                 value={formData.min}
                 onChange={handleChange}
                 min={1} />
+
             </div>
           </div>
 

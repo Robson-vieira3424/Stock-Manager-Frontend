@@ -1,13 +1,14 @@
-form {
+.form__product {
   font-family: "Roboto", sans-serif;
   border: 2px solid rgba(0, 0, 0, 0.349);
   max-width: 500px;
-  border: 1px solid beige;
+  border: 1px solid transparent;
   border-radius: 4%;
-  background-color: #ededed;
+  background-color: #FDFEFE;
+  padding: 15px;
 }
 
-fieldset {
+.fildset__form__product {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
@@ -16,12 +17,12 @@ fieldset {
   border: none;
 }
 
-legend {
+.legend__form__product {
   text-align: left;
   margin: 18px 0 18px 8px;
   font-size: 20px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.781);
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .input__form__producs {
@@ -31,7 +32,7 @@ legend {
   width: 100%;
 }
 
-input,
+.input__form__product,
 .select__item {
   padding: 12px;
   border-radius: 8px;
@@ -65,7 +66,7 @@ input:focus,
   justify-content: space-around;
 }
 
-label {
+.lable__form__product {
   font-size: 15px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.89);
@@ -85,13 +86,14 @@ label {
   padding: 10px 0;
   border: none;
   border-radius: 6px;
-  font-weight: 600;
-  background-color: #b6b6b6;
+  font-weight: 500;
+  background-color: #ffffff;
   color: #000000;
 }
 
 .btn__cancelar:hover {
   cursor: pointer;
+  background-color: rgb(209, 209, 209);
 }
 
 .btn__adicionar {
@@ -100,7 +102,7 @@ label {
   padding: 10px 0;
   border: none;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 500;
   background-color: #177cff;
   color: #ffffff;
 }

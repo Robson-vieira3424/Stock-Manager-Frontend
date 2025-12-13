@@ -65,17 +65,17 @@ export default function ProductTable() {
     return (
 
         <section className="container__table">
-            <table>
-                <thead>
+            <table className="table__products">
+                <thead className="header__table__products">
                     <tr>
-                        <th>Item</th>
-                        <th>Categoria</th>
-                        <th>Quantidade</th>
-                        <th>Estoque Min</th>
-                        <th>Status</th>
+                        <th className="th__theader">Item</th>
+                        <th className="th__theader">Categoria</th>
+                        <th className="th__theader">Quantidade</th>
+                        <th className="th__theader">Estoque Min</th>
+                        <th className="th__theader">Status</th>
 
-                        <th>Ultima Atualização</th>
-                        <th>Ações</th>
+                        <th className="th__theader">Ultima Atualização</th>
+                        <th  className="th__theader">Ações</th>
                     </tr>
                 </thead>
 
