@@ -25,7 +25,7 @@ export default function ProductTable() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetchProdutos();
+        fetchProdutos();           
     },[]);
 
     const fetchProdutos = async () => {
@@ -67,7 +67,7 @@ export default function ProductTable() {
         <section className="container__table">
             <table className="table__products">
                 <thead className="header__table__products">
-                    <tr>
+                    <tr className="theader__row">
                         <th className="th__theader">Item</th>
                         <th className="th__theader">Categoria</th>
                         <th className="th__theader">Quantidade</th>
@@ -84,7 +84,7 @@ export default function ProductTable() {
                         listaProdutos.map((item, index) =>{
                             const currentStatus = getStatusLabel(item.quantity, item.min, item.status);
                             return (
-              <tr key={item.id || index}>
+              <tr key={item.id || index} className="row__body">
                 
                 <td className="Title__item">{item.name}</td>
                 

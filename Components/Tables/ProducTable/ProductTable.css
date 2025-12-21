@@ -1,71 +1,73 @@
-
-.container__table{
-    width: 100%;
+.container__table {
+    width: 90%;
     display: flex;
     justify-content: center;
-    margin-top: 40px;
-    
+    margin: 40px auto 0px;
+    border: 1px solid rgba(0, 0, 0, 0.138);
+    border-radius: 12px;
+    overflow: hidden;          /* 🔑 ESSENCIAL */
 }
-.table__products{
-    width: 90%;
+
+.table__products {
+    width: 100%;
     border-collapse: separate;
     display: table;
-    border: 1px solid rgba(0, 0, 0, 0.138);
+    border: none;
     border-radius: 12px;
     border-spacing: 0;
     background-color: #F2F4F6;
 }
 
-.header__table__products tr:hover {
-    
+.theader__row{
+ background-color: #FFFFFF;
+}
+.theader__row tr:hover {
+
 }
 
-.th__theader{
-   
-  padding: 0 10px;
-  text-align: center;
-  
+.th__theader {
 
-    padding: 12px 10px;
-    color:  rgba(0, 0, 0, 0.5);;
-    font-weight: 600;
-   font-size: .95rem;
+    padding: 0 10px;
     text-align: center;
-   
+    padding: 12px 10px;
+    color: rgb(90, 101, 116);
+    font-weight: 600;
+    font-size: .95rem;
+    text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     background-color: transparent;
 }
 
-
-
-tbody tr{
+.row__body {
     background-color: #ffffff;
-    
+   
 }
 
-tbody tr:hover{
-    background-color: #6666660e;
-    
+.row__body:hover {
+    background-color: #fffefea2;
 }
 
-tbody tr td {
+.row__body td {
     padding: 15px 12px;
     font-size: 14px;
     color: #333;
     text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.row__body:last-child td {
+    border-bottom: none;
+}
+td {
+    padding: 10px 0px;
+    text-align: start;
 }
 
-td{
-      padding: 10px 0px;
-    text-align: start;
-}   
-
-.Title__item{
+.Title__item {
     color: rgba(0, 0, 0, 0.9);
     font-weight: 600;
 }
 
-.texto__table__generico{
+.texto__table__generico {
     color: #000000;
     font-weight: 400;
 }
@@ -85,47 +87,49 @@ td{
 
 .status--baixa {
     background: #ff9100;
-    color:#e1f0e7;
+    color: #e1f0e7;
 }
 
 .status--zero {
     background: #ff3737;
-    color:#e1f0e7;
+    color: #e1f0e7;
 }
 
-.data__atualização{
-    color:#5a5a5ab2;
+.data__atualização {
+    color: #5a5a5ab2;
     font-weight: 500;
 }
 
-.acoes{
+.acoes {
     display: flex;
     gap: 5px;
     justify-content: center;
 }
 
-.btn-edit{
+.btn-edit {
     border: none;
-    border-radius: 5px;
-    background-color: transparent;
-     padding: 10px;
-
-}
-.btn-edit:hover{
-    border: none;
-    border-radius: 5px;
-    background-color: #8d8b8b80;
-    cursor: pointer;
-}
-.btn-delete{
-   border: none;
     border-radius: 5px;
     background-color: transparent;
     padding: 10px;
 
 }
 
-.btn-delete:hover{
+.btn-edit:hover {
+    border: none;
+    border-radius: 5px;
+    background-color: #8d8b8b80;
+    cursor: pointer;
+}
+
+.btn-delete {
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 10px;
+
+}
+
+.btn-delete:hover {
     border: none;
     border-radius: 5px;
     background-color: #8d0b0b56;
@@ -133,7 +137,7 @@ td{
     color: #bb2929b0;
 }
 
-.quantidade__table__generico{
+.quantidade__table__generico {
     text-align: center;
     color: #000000;
     font-weight: 400;
