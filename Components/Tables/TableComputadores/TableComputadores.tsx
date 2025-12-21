@@ -63,7 +63,7 @@ export default function ({ data }: TableComputadorProps) {
 
           const tipoPc = (() => {
             const modelo = pc.modelo?.toLowerCase() ?? "";
-
+            console.log(pc.nome)
             if (modelo.includes("xps")) return "Dell XPS";
             if (modelo.includes("all-in-one")) return "All-in-One";
             if (modelo.includes("thinkcenter")) return "ThinkCentre";
@@ -76,6 +76,7 @@ export default function ({ data }: TableComputadorProps) {
               </TableCell>
 
               <TableCell className="equipamento">
+               {}
                 <div className="nome__equipamento">{pc.nome}</div>
                 <div className="modelo__equipamento">{pc.modelo}</div>
               </TableCell>
