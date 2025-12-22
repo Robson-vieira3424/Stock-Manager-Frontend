@@ -4,7 +4,8 @@ form {
     max-width: 500px;
     border: 1px solid beige;
     border-radius: 4%;
-    background-color: #ededed;
+    background-color: #FFFFFF;
+    padding:1rem;
 }
 
 fieldset {
@@ -14,7 +15,7 @@ fieldset {
     flex-wrap: wrap;
     gap: 20px;
     border: none;
-
+   
 }
 
 legend {
