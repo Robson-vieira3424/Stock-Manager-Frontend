@@ -3,40 +3,37 @@ import { useState, useEffect, FormEvent } from "react";
 import axios from "axios";
 import "./FormMoviments.css";
 
-// Interface para tipar o objeto de produto que virá do banco
 interface Product {
     id: number;
     name: string;
 }
+
+interface Departamento {
+    id: number;
+    nome: string;
+}
+
 interface Secretaria {
     id: number;
     nome: string;
-    departamentos: any[]; 
+    departamentos: Departamento[];
 }
+
 interface FormMovimentsProps {
     onClose: (shouldRefresh?: boolean) => void;
 }
 
 export default function FormMoviments({ onClose }: FormMovimentsProps) {
-    // Estados do Formulário
 
     const [productsList, setProductsList] = useState<Product[]>([]);
 
     const [listSecretarias, setListSecretarias] = useState<Secretaria[]>([]);
 
+    const [departamentosOpcoes, setDepartamentosOpcoes] = useState<Departamento[]>([]);
+
+    const [selectedSecretariaId, setSelectedSecretariaId] = useState<string>("");
+
     const [tipoMovimentacao, setTipoMovimentacao] = useState("INPUT");
-
-    const [formData, setFormData] = useState({
-        productId: "",
-        type: "INPUT", // Valor padrão compatível com Java (INPUT/OUTPUT)
-        amount: 0,
-        date: "", // Data de hoje
-        departamento: "",
-        categoria: "",
-        secretaria: "",
-        observacao: ""
-    });
-
 
     // 1. Buscar os produtos reais para pegar o ID correto
     useEffect(() => {
@@ -49,8 +46,9 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                 // Buscando Secretarias
                 const responseSec = await axios.get("http://localhost:8080/secretaria");
                 // Garante que é um array, senão passa array vazio para evitar erro no map
-               console.log("Secretarias backend:", responseSec.data);
+                console.log("Secretarias backend:", responseSec.data);
                 setListSecretarias(Array.isArray(responseSec.data) ? responseSec.data : []);
+
             } catch (error) {
                 console.error("Erro ao buscar produtos:", error);
             }
@@ -71,14 +69,25 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
         const currentProductId = form.get("productId") as string;
         const currentAmount = Number(form.get("amount"));
         const currentType = form.get("type") as string;
-        const currentDate = form.get("date") as string;
         const currentCategoria = form.get("categoria") as string;
 
         // Campos que dependem do tipo
-        const currentSecretaria = form.get("secretaria") as string || "";
-        const currentDepartamento = form.get("departamento") as string || "";
+        const secretariaId = form.get("secretaria") as string;
+        const departamentoId = form.get("departamento") as string;
         const currentObservacao = form.get("observacao") as string;
 
+        let nomeSecretaria = "";
+        let nomeDepartamento = "";
+
+        if (currentType === "OUTPUT") {
+            // Busca o objeto completo da secretaria pelo ID
+            const secObj = listSecretarias.find(s => s.id.toString() === secretariaId);
+            // Busca o objeto completo do departamento pelo ID (dentro da lista filtrada)
+            const depObj = departamentosOpcoes.find(d => d.id.toString() === departamentoId);
+
+            if (secObj) nomeSecretaria = secObj.nome;
+            if (depObj) nomeDepartamento = depObj.nome;
+        }
         // Validação básica
         if (!currentProductId || !currentAmount) {
             alert("Por favor, selecione um produto e informe a quantidade.");
@@ -91,11 +100,9 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                 productId: Number(currentProductId),
                 type: currentType,
                 amount: currentAmount,
-                moveDate: currentDate,
                 categoria: currentCategoria,
-
-                secretaria: currentSecretaria,
-                departamento: currentDepartamento,
+                secretaria: nomeSecretaria,
+                departamento: nomeDepartamento,
                 observacao: currentObservacao
             };
             // console.log("Enviando:", payload); // Debug
@@ -165,42 +172,62 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                         required
                     />
                 </div>
-               {/* RENDERIZAÇÃO CONDICIONAL */}
+               
                 {tipoMovimentacao === "OUTPUT" && (
                     <>
-                        {/* DESTINO (Secretaria) */}
+                        {/* SECRETARIA */}
                         <div className="container__label__input__form">
-                            <label>Secretaria (Destino)</label>
+                            <label>Secretaria</label>
                             <select
                                 className="select__item"
-                                name="secretaria"
-                                defaultValue=""
+                                name="secretaria" // Nome do campo para o FormData
+                                value={selectedSecretariaId} // Valor controlado pelo estado
+                                onChange={(e) => {
+                                    const novoId = e.target.value;
+                                    setSelectedSecretariaId(novoId);
+
+                                    // MÁGICA: Filtra na memória
+                                    const secEncontrada = listSecretarias.find(s => s.id.toString() === novoId);
+                                    
+                                    if (secEncontrada) {
+                                        setDepartamentosOpcoes(secEncontrada.departamentos);
+                                    } else {
+                                        setDepartamentosOpcoes([]);
+                                    }
+                                }}
+                                required
                             >
-                                <option value="" disabled>Selecione uma Secretaria</option>
-                                
-                                {/* MUDANÇA 3: Usando sec.id na key e sec.nome no texto */}
+                                <option value="" disabled>Selecione a Secretaria</option>
+                                {/* AQUI ESTAVA O ERRO: Faltava o map */}
                                 {listSecretarias.map((sec) => (
-                                    <option key={sec.id} value={sec.nome}>
+                                    <option key={sec.id} value={sec.id}>
                                         {sec.nome}
                                     </option>
                                 ))}
-
                             </select>
                         </div>
 
                         {/* DEPARTAMENTO */}
                         <div className="container__label__input__form">
                             <label>Departamento</label>
-                            <input
-                                type="text"
+                            <select 
+                                className="select__item" 
                                 name="departamento"
-                                placeholder="Ex: RH, Almoxarifado..."
-                            />
+                                disabled={!selectedSecretariaId} // Desabilita se não tiver secretaria
+                                defaultValue=""
+                            >
+                                <option value="" disabled>Selecione o Departamento</option>
+                                {departamentosOpcoes.map((dep) => (
+                                    <option key={dep.id} value={dep.id}>
+                                        {dep.nome}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                     </>
                 )}
 
-                {/* OBSERVAÇÕES (Visual apenas) */}
+               
                 <div className="container__label__input__form100">
                     <label>Observações (opcional)</label>
                     <input
@@ -212,17 +239,12 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                 </div>
 
                 <div className="container__buttons">
-                    {/* Botão Cancelar não recarrega a página (type button) */}
                     <button
                         type="button"
                         className="cancelar__btn"
                         onClick={() => onClose(false)}
-                    >
-                        Cancelar
-                    </button>
-                    <button type="submit" className="registrar__btn">
-                        Registrar Movimentação
-                    </button>
+                    >Cancelar</button>
+                    <button type="submit" className="registrar__btn">Registrar Movimentação</button>
                 </div>
             </fieldset>
         </form>
