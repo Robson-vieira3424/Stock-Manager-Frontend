@@ -36,42 +36,43 @@ import { use, useEffect, useState } from "react";
 import { CpuIcon, Flashlight } from "lucide-react";
 import { closeSync } from "fs";
 
+
 const PRESETS = {
-      allinone: {
-        Marca: "Dell",
-        Modelo: "All-in-One", // Exemplo
-        MarcaMonitor: "Dell", // Mesmo que não apareça no form, deixamos salvo
-        Processador : "Intel Core I5-10400",
-        Tamanho:"Integrado",
-        Memoria: "8Gb DDR4",
-        ModeloMonitor:"Integrado",
-      },
-      lenovo: {
-        Marca: "Lenovo",
-        Modelo: "ThinkCenter",
-        MarcaMonitor: "Lenovo",
-        ModeloMonitor:"ThinkVision",
-        Tamanho:"24´",
-        Processador : "Ryzen 5 5650G",
-      },
-      dell: {
-        Marca: "Dell",
-        Modelo: "XPS",
-        MarcaMonitor: "Dell",
-        ModeloMonitor:"XPS",
-        Processador : "NAO SEI",
-        Tamanho:"24´",
-      },
-      generico: {
-        Marca: "",
-        Modelo: "",
-        MarcaMonitor: "",
-        Tamanho:"",
-        MarcaEsatbilizador: "",
-        Processador : "",
-        ModeloMonitor:"",
-      },
-    };
+  allinone: {
+    Marca: "Dell",
+    Modelo: "All-in-One", // Exemplo
+    MarcaMonitor: "Dell", // Mesmo que não apareça no form, deixamos salvo
+    Processador: "Intel Core I5-10400",
+    Tamanho: "Integrado",
+    Memoria: "8Gb DDR4",
+    ModeloMonitor: "Integrado",
+  },
+  lenovo: {
+    Marca: "Lenovo",
+    Modelo: "ThinkCenter",
+    MarcaMonitor: "Lenovo",
+    ModeloMonitor: "ThinkVision",
+    Tamanho: "24´",
+    Processador: "Ryzen 5 5650G",
+  },
+  dell: {
+    Marca: "Dell",
+    Modelo: "XPS",
+    MarcaMonitor: "Dell",
+    ModeloMonitor: "XPS",
+    Processador: "NAO SEI",
+    Tamanho: "24´",
+  },
+  generico: {
+    Marca: "",
+    Modelo: "",
+    MarcaMonitor: "",
+    Tamanho: "",
+    MarcaEsatbilizador: "",
+    Processador: "",
+    ModeloMonitor: "",
+  },
+};
 
 // 1. Definição do Schema (Regras de validação)
 const formSchema = z.object({
@@ -98,7 +99,7 @@ const formSchema = z.object({
 
   // --- Localização ---
   secretaria: z.string({ required_error: "Selecione uma secretaria" }),
-  Setor: z.string({ required_error : "Selecione um setor" }),
+  Setor: z.string({ required_error: "Selecione um setor" }),
 
   // O tipo vem do cardSelecionado, mas podemos validar se quiser
   tipo: z.string().optional(),
@@ -109,6 +110,8 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function FormComputadores({ onClose }: { onClose: () => void }) {
   const [cardSelecionado, setCardSelecionado] = useState<string | null>(null);
+  const [secretarias, setSecretarias] = useState<any[]>([]);
+  const [setores, setSetores] = useState<any[]>([]);
 
   const mostrarPerifiericos =
     cardSelecionado !== null && cardSelecionado !== "allinone";
@@ -139,7 +142,34 @@ export default function FormComputadores({ onClose }: { onClose: () => void }) {
       tipo: "",
     },
   });
-useEffect(() => {
+
+  useEffect(() => {
+    async function carregarSecretarias() {
+      try {
+        const response = await axios.get("http://localhost:8080/secretaria");
+        setSecretarias(response.data);
+      } catch (error) {
+        console.error("Erro ao carregar secretarias", error);
+      }
+    }
+
+    carregarSecretarias();
+  }, []);
+
+  function handleSecretariaChange(secretariaNome: string) {
+    form.setValue("secretaria", secretariaNome);
+
+    const secretariaSelecionada = secretarias.find(
+      (s) => s.nome === secretariaNome
+    );
+
+    setSetores(secretariaSelecionada?.departamentos || []);
+
+    // limpa setor anterior
+    form.setValue("Setor", "");
+  }
+
+  useEffect(() => {
     if (cardSelecionado && PRESETS[cardSelecionado as keyof typeof PRESETS]) {
       const preset = PRESETS[cardSelecionado as keyof typeof PRESETS];
 
@@ -148,14 +178,14 @@ useEffect(() => {
       form.setValue("Modelo", preset.Modelo);
       form.setValue("Processador", preset.Processador);
       form.setValue("Modelo", preset.Modelo);
-      
+
       // Se não for All-in-one, preenche monitor e estabilizador também
       if (cardSelecionado !== "allinone") {
         form.setValue("MarcaMonitor", preset.MarcaMonitor);
-        form.setValue("TamanhoMonitor", preset.Tamanho); 
+        form.setValue("TamanhoMonitor", preset.Tamanho);
         form.setValue("ModeloMonitor", preset.ModeloMonitor);
       }
-      
+
       // (Opcional) Sincroniza o campo 'tipo' do form com o estado visual
       form.setValue("tipo", cardSelecionado);
     }
@@ -169,39 +199,39 @@ useEffect(() => {
       alert("Por favor, selecione o tipo de equipamento (Card) no topo.");
       return;
     }
-    
+
     // Se for All-in-One ou Genérico (que talvez não tenha), manda vazio/N/A para não ir null.
     const usarEstabilizador = cardSelecionado !== "allinone";
 
     const estabilizadorPayload = usarEstabilizador
       ? {
-          patrimonio: values.PatrimonioEstabilizador || "",
-          marca: values.MarcaEsatbilizador || "",
-          modelo: values.ModeloEstabilizador || "",
-          potencia: values.Potencia || "",
-        }
+        patrimonio: values.PatrimonioEstabilizador || "",
+        marca: values.MarcaEsatbilizador || "",
+        modelo: values.ModeloEstabilizador || "",
+        potencia: values.Potencia || "",
+      }
       : {
-          // Objeto "vazio" para satisfazer o Backend
-          patrimonio: "N/A",
-          marca: "N/A",
-          modelo: "N/A",
-          potencia: "",
-        };
+        // Objeto "vazio" para satisfazer o Backend
+        patrimonio: "N/A",
+        marca: "N/A",
+        modelo: "N/A",
+        potencia: "",
+      };
 
     const monitorPayload =
       cardSelecionado === "allinone"
         ? {
-            patrimonio: "Integrado", // Ou deixe string vazia "" se preferir
-            marca: "Dell", // Reaproveita a marca do PC
-            modelo: "Monitor Integrado",
-            tamanho: "24'", // Caso tenha capturado ou string vazia
-          }
+          patrimonio: "Integrado", // Ou deixe string vazia "" se preferir
+          marca: "Dell", // Reaproveita a marca do PC
+          modelo: "Monitor Integrado",
+          tamanho: "24'", // Caso tenha capturado ou string vazia
+        }
         : {
-            patrimonio: values.PatrimonioMonitor || "",
-            marca: values.MarcaMonitor || "",
-            modelo: values.ModeloMonitor || "",
-            tamanho: values.TamanhoMonitor || "",
-          };
+          patrimonio: values.PatrimonioMonitor || "",
+          marca: values.MarcaMonitor || "",
+          modelo: values.ModeloMonitor || "",
+          tamanho: values.TamanhoMonitor || "",
+        };
 
     // Montagem do Payload para a API
     // Dica: Estou padronizando para camelCase para o Java
@@ -258,9 +288,8 @@ useEffect(() => {
             Tipo de equipamento *
           </section>
           <section
-            className={`card__form__computer ${
-              cardSelecionado === "allinone" ? "card-selecionado" : ""
-            }`}
+            className={`card__form__computer ${cardSelecionado === "allinone" ? "card-selecionado" : ""
+              }`}
             onClick={() => setCardSelecionado("allinone")}
           >
             <section className="icon__card__form__computer">
@@ -275,9 +304,8 @@ useEffect(() => {
           </section>
 
           <section
-            className={`card__form__computer ${
-              cardSelecionado === "lenovo" ? "card-selecionado" : ""
-            }`}
+            className={`card__form__computer ${cardSelecionado === "lenovo" ? "card-selecionado" : ""
+              }`}
             onClick={() => setCardSelecionado("lenovo")}
           >
             <section className="icon__card__form__computer">
@@ -294,9 +322,8 @@ useEffect(() => {
           </section>
 
           <section
-            className={`card__form__computer ${
-              cardSelecionado === "dell" ? "card-selecionado" : ""
-            }`}
+            className={`card__form__computer ${cardSelecionado === "dell" ? "card-selecionado" : ""
+              }`}
             onClick={() => setCardSelecionado("dell")}
           >
             <section className="icon__card__form__computer">
@@ -307,15 +334,14 @@ useEffect(() => {
                 Dell (Combo Padronizado)
               </h3>
               <p className="description__card__form__computer">
-                 Computador + Monitor + Estabilizador
+                Computador + Monitor + Estabilizador
               </p>
             </section>
           </section>
 
           <section
-            className={`card__form__computer ${
-              cardSelecionado === "generico" ? "card-selecionado" : ""
-            }`}
+            className={`card__form__computer ${cardSelecionado === "generico" ? "card-selecionado" : ""
+              }`}
             onClick={() => setCardSelecionado("generico")}
           >
             <section className="icon__card__form__computer">
@@ -326,7 +352,7 @@ useEffect(() => {
                 Genérico (Marcas Diversas)
               </h3>
               <p className="description__card__form__computer">
-                 Computador + Monitor + Estabilizador
+                Computador + Monitor + Estabilizador
               </p>
             </section>
           </section>
@@ -771,11 +797,8 @@ useEffect(() => {
             name="secretaria"
             render={({ field }) => (
               <FormItem className="container__item__form__computer">
-                <FormLabel>Local*</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <FormLabel>Secretaria*</FormLabel>
+                <Select onValueChange={handleSecretariaChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger className="select-trigger-computer">
                       <SelectValue placeholder="Selecione uma Secretaria" />
@@ -785,13 +808,12 @@ useEffect(() => {
                     className="z-[9999] bg-white max-h-60"
                     position="popper"
                     sideOffset={5}
-                  >
-                    <SelectItem value="Secretaria de Obras">
-                      Secretaria de Obras
+                  > {secretarias.map((secretaria) => (
+                    <SelectItem key={secretaria.id} value={secretaria.nome}>
+                      {secretaria.nome}
                     </SelectItem>
-                    <SelectItem value="Secretaria de Educação">
-                      Secretaria de Educação
-                    </SelectItem>
+                  ))}
+
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -808,25 +830,22 @@ useEffect(() => {
               <FormItem className="container__item__form__computer">
                 <FormLabel>Setor*</FormLabel>
                 <Select
+                  disabled={!setores.length}
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  value={field.value}
                 >
                   <FormControl>
                     <SelectTrigger className="select-trigger-computer">
-                      <SelectValue placeholder="Selecione uma Secretaria" />
+                      <SelectValue placeholder="Selecione um setor" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent
-                    className="z-[9999] bg-white max-h-60"
-                    position="popper"
-                    sideOffset={5}
-                  >
-                    <SelectItem value="Secretaria de Obras">
-                      Secretaria de Obras
-                    </SelectItem>
-                    <SelectItem value="Secretaria de Educação">
-                      Secretaria de Educação
-                    </SelectItem>
+
+                  <SelectContent className="z-[9999] bg-white max-h-60">
+                    {setores.map((setor) => (
+                      <SelectItem key={setor.id} value={setor.nome}>
+                        {setor.nome}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
