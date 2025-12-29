@@ -76,7 +76,7 @@ Facilitar o controle de estoque e ativos de TI, garantindo:
 ## 📸 Telas do Sistema
 
 ### 📦 Dashboard de Estoque
-![Dashboard](./images/dashboard.png)
+![Dashboard](./screenshots/estoque.png/)
 
 ### 🔄 Movimentações
 ![Movimentações](./images/movimentacoes.png)
