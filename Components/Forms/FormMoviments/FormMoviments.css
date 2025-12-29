@@ -26,7 +26,12 @@ legend {
     font-weight: 600;
     color: rgba(0, 0, 0, 0.781);
 }
-
+.container__label__input__form__product{
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
 .container__label__input__form {
     width: 44%;
     display: flex;
@@ -63,7 +68,7 @@ input:focus,
 }
 
 .input__observação {
-    width: 92%;
+    width: 98%;
     margin-top: 10px;
     font-weight: 500;
     color: black;

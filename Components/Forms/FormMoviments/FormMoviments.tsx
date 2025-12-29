@@ -69,15 +69,12 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
         const currentProductId = form.get("productId") as string;
         const currentAmount = Number(form.get("amount"));
         const currentType = form.get("type") as string;
-        const currentCategoria = form.get("categoria") as string;
+
 
         // Campos que dependem do tipo
         const secretariaId = form.get("secretaria") as string;
         const departamentoId = form.get("departamento") as string;
         const currentObservacao = form.get("observacao") as string;
-
-        let nomeSecretaria = "";
-        let nomeDepartamento = "";
 
         if (currentType === "OUTPUT") {
             // Busca o objeto completo da secretaria pelo ID
@@ -85,8 +82,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
             // Busca o objeto completo do departamento pelo ID (dentro da lista filtrada)
             const depObj = departamentosOpcoes.find(d => d.id.toString() === departamentoId);
 
-            if (secObj) nomeSecretaria = secObj.nome;
-            if (depObj) nomeDepartamento = depObj.nome;
+           
         }
         // Validação básica
         if (!currentProductId || !currentAmount) {
@@ -100,12 +96,11 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                 productId: Number(currentProductId),
                 type: currentType,
                 amount: currentAmount,
-                categoria: currentCategoria,
-                secretaria: nomeSecretaria,
-                departamento: nomeDepartamento,
+                secretariaId: Number(secretariaId),
+                departamentoId: Number(departamentoId),
                 observacao: currentObservacao
             };
-            // console.log("Enviando:", payload); // Debug
+            console.log("Enviando:", payload);
             await axios.post("http://localhost:8080/moviments", payload);
 
             onClose(true);
@@ -120,7 +115,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                 <legend>Nova Movimentação</legend>
 
                 {/* PRODUTO (Agora busca do banco) */}
-                <div className="container__label__input__form">
+                <div className="container__label__input__form__product">
                     <label>Produto</label>
                     <select
                         className="select__item"
@@ -137,15 +132,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                     </select>
                 </div>
 
-                {/* CATEGORIA (Visual apenas) */}
-                <div className="container__label__input__form">
-                    <label>Categoria</label>
-                    <input
-                        type="text"
-                        name="categoria"
 
-                    />
-                </div>
 
                 {/* TIPO DE MOVIMENTAÇÃO */}
                 <div className="container__label__input__form">
@@ -172,7 +159,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                         required
                     />
                 </div>
-               
+
                 {tipoMovimentacao === "OUTPUT" && (
                     <>
                         {/* SECRETARIA */}
@@ -188,7 +175,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
 
                                     // MÁGICA: Filtra na memória
                                     const secEncontrada = listSecretarias.find(s => s.id.toString() === novoId);
-                                    
+
                                     if (secEncontrada) {
                                         setDepartamentosOpcoes(secEncontrada.departamentos);
                                     } else {
@@ -210,8 +197,8 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                         {/* DEPARTAMENTO */}
                         <div className="container__label__input__form">
                             <label>Departamento</label>
-                            <select 
-                                className="select__item" 
+                            <select
+                                className="select__item"
                                 name="departamento"
                                 disabled={!selectedSecretariaId} // Desabilita se não tiver secretaria
                                 defaultValue=""
@@ -227,7 +214,7 @@ export default function FormMoviments({ onClose }: FormMovimentsProps) {
                     </>
                 )}
 
-               
+
                 <div className="container__label__input__form100">
                     <label>Observações (opcional)</label>
                     <input

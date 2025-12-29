@@ -11,6 +11,7 @@ interface FormProductProps {
 interface ProdutoData {
   nome: string;
   min: number | string;
+  categoria:string;
   quantidade: number | string;
 }
 
@@ -21,6 +22,7 @@ export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
   const [formData, setFormData] = useState<ProdutoData>({
     nome: "",
     min: "",
+    categoria:"",
     quantidade: ""
   });
 
@@ -46,6 +48,7 @@ export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
 
     const productPayload = {
       name: formData.nome,
+      categoria:formData.categoria,
       quantity: Number(formData.quantidade),
       min: Number(formData.min)
     };
@@ -77,10 +80,16 @@ export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
         <fieldset className="fildset__form__product">
           <legend className="legend__form__product">Novo Produto</legend>
 
-          <div className="input__form__producs">
-            <label className="lable__form__product" htmlFor="nome">Produto</label>
+          <div className="container__form__products">
+            <label className="lable__form__product" htmlFor="nome">Produto*</label>
             <input className="input__form__product" value={formData.nome}
-              onChange={handleChange} type="text" placeholder="Nome do produto" name="nome" />
+              onChange={handleChange} type="text" placeholder="Ex: Toner 4080" name="nome" />
+          </div>
+
+           <div className="container__form__products">
+            <label className="lable__form__product" htmlFor="nome">Categoria*</label>
+            <input className="input__form__product" value={formData.categoria}
+              onChange={handleChange} type="text" placeholder="Ex: Periféricos" name="categoria" />
           </div>
 
           <div className="container__inputs__menores">
@@ -91,7 +100,8 @@ export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
                 id="quantidade"
                 value={formData.quantidade}
                 onChange={handleChange}
-                min={0} />
+                min={0} 
+                defaultValue={1}/>
             </div>
 
             <div className="input__menor">
@@ -101,7 +111,8 @@ export default function FormProduct({ onSuccess, onClose }: FormProductProps) {
                 id="min"
                 value={formData.min}
                 onChange={handleChange}
-                min={1} />
+                min={1} 
+                defaultValue={1}/>
 
             </div>
           </div>

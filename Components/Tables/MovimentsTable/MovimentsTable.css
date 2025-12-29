@@ -1,0 +1,106 @@
+.container__maior__table {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    box-shadow: 3px 5px 14px rgba(0, 0, 0, 0.185);
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.container__header__table{
+    padding: 15px 30px;
+}
+
+.container__header__table {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title__table__moviments {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+.input__find__moviments {
+    border: 1px solid rgba(0, 0, 0, 0.116);
+    width: 20rem;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+}
+
+.container__table {
+    width: 96.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table__moviments {
+    width: 100%;
+    border-collapse: separate;
+    display: table;
+    border: none;
+    border-radius: 12px;
+    border-spacing: 0;
+    background-color: #F2F4F6;
+}
+
+.header__table__moviments {}
+
+.theader__row {
+    background-color: #FFFFFF;
+}
+
+.th__theader {
+    padding: 0 10px;
+    text-align: center;
+    padding: 12px 10px;
+    color: rgb(50, 55, 61);
+    font-weight: 600;
+    font-size: .95rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    background-color: transparent;
+}
+
+.row__body {
+    background-color: #ffffff;
+    transition: background-color .2s ease, transform .2s ease;
+    animation: rowFadeIn .3s ease forwards;
+}
+@keyframes rowFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.row__body:hover {
+    background-color: #fffefea2;
+    transform: scale(1.002);
+}
+
+.row__body td {
+    padding: 15px 12px;
+    font-size: 14px;
+    color: #070707;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.Title__item{
+    font-weight: 600;
+}
