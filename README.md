@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📦 Stock Manager - Departamento de Tecnologia
+Sistema completo de gestão de ativos e controle de estoque desenvolvido para o Departamento de Tecnologia da Prefeitura Municipal de Penedo. A aplicação centraliza o controle de entradas e saídas de periféricos, além de gerenciar o inventário de hardware e manutenções do município.
 
-## Getting Started
+🚀 Funcionalidades Principais
+Gestão de Estoque e Movimentações
+Controle Dinâmico: Listagem de produtos com indicadores de "Estoque Baixo" e "Unidades Disponíveis".
 
-First, run the development server:
+Lógica de Movimentação: Sistema inteligente de entradas e saídas que atualiza automaticamente o saldo do produto no inventário (Soma em entradas / Subtração em saídas).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Histórico Detalhado: Registro de logs de movimentação com data, categoria, tipo e destino/origem.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Módulo de Hardware (Em Desenvolvimento)
+Inventário de Computadores: Cadastro técnico de máquinas vinculado às secretarias municipais para localização imediata.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Gestão de Manutenções: Módulo para histórico de reparos e status de funcionamento dos equipamentos.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🛠️ Stack Técnica
+Frontend: React.js, TypeScript e Tailwind CSS (ou CSS Modules).
 
-## Learn More
+Componentização: Criação de cards de resumo (KPIs) e tabelas dinâmicas com filtros de busca.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Integração: Consumo de API REST para persistência de dados e atualizações em tempo real.
